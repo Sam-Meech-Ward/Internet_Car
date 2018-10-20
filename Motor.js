@@ -1,12 +1,12 @@
-// const onoff = require('onoff');
-// const Gpio = onoff.Gpio;
+const onoff = require('onoff');
+const Gpio = onoff.Gpio;
 
-class Gpio {
-  write(value, cb) {
-    console.log("write", value);
-    cb();
-  }
-}
+// class Gpio {
+//   write(value, cb) {
+//     console.log("write", value);
+//     cb();
+//   }
+// }
 
 function gpioPin(pinNumber, direction) {
   return new Gpio(pinNumber, direction);
@@ -37,13 +37,13 @@ const Motor = {
   disable() {
     return gpioWrite(this.enablePin, 0.0);
   },
-  forwards() {
+  forward() {
     return Promise.all([
       gpioWrite(this.positivePin, 1.0),
       gpioWrite(this.negativePin, 0.0)
     ]);
   },
-  backwards() {
+  backward() {
     return Promise.all([
       gpioWrite(this.positivePin, 0.0),
       gpioWrite(this.negativePin, 1.0)
