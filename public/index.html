@@ -7,6 +7,54 @@
   <title>Car</title>
 </head>
 <body>
+
+  <button class="forward">forward</button>
+  <button class="backward">backward</button>
+  <button class="left">left</button>
+  <button class="right">right</button>
+
+  <script>
+    
+
+    function sendHTTPRequest(path) {
+      console.log("sendHTTPRequest", path);
+      const HTTP = new XMLHttpRequest();
+      const url = 'http://localhost:3333/';
+      HTTP.open("POST", url+path);
+      HTTP.onreadystatechange = function() {
+        console.log("done", this.readyState, this.status);
+      }
+      HTTP.send();
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector(".forward").addEventListener("mousedown", () => {
+        sendHTTPRequest("forward");
+      });
+      document.querySelector(".backward").addEventListener("mousedown", () => {
+        sendHTTPRequest("backward");
+      });
+      document.querySelector(".left").addEventListener("mousedown", () => {
+        sendHTTPRequest("left");
+      });
+      document.querySelector(".right").addEventListener("mousedown", () => {
+        sendHTTPRequest("right");
+      });
+
+      document.querySelector(".forward").addEventListener("mouseup", () => {
+        sendHTTPRequest("stop_moving");
+      });
+      document.querySelector(".backward").addEventListener("mouseup", () => {
+        sendHTTPRequest("stop_moving");
+      });
+      document.querySelector(".left").addEventListener("mouseup", () => {
+        sendHTTPRequest("stop_steering");
+      });
+      document.querySelector(".right").addEventListener("mouseup", () => {
+        sendHTTPRequest("stop_steering");
+      });
+    });
+  </script>
   
 </body>
 </html>

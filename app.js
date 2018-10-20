@@ -7,15 +7,18 @@ const carControls = {
   backward: () => {
     console.log("backward");
   },
-  stop: () => {
-    console.log("stop");
+  stopMoving: () => {
+    console.log("stop moving");
   },
   right: () => {
     console.log("right");
   },
   left: () => {
     console.log("left");
-  }
+  },
+  stopSteering: () => {
+    console.log("stop steering");
+  },
 }
 
 server(carControls);
