@@ -41,6 +41,12 @@ const Motor = {
       gpioWrite(this.positive, 0.0),
       gpioWrite(this.negative, 1.0)
     ]);
+  },
+  stop() {
+    return Promise.all([
+      gpioWrite(this.positive, 0.0),
+      gpioWrite(this.negative, 0.0)
+    ]);
   }
 
 };
