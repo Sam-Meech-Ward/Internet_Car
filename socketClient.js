@@ -5,7 +5,7 @@ module.exports = ({forward, backward, stopMoving, left, right, stopSteering}) =>
   const ws = new WebSocket('https://internet-car.herokuapp.com/');
   
   ws.on('open', function open() {
-    ws.send({user: "pi"});
+    ws.send(JSON.stringify({user: "pi"}));
   });
   
   ws.on('message', function incoming(data) {
