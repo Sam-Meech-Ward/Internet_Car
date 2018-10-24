@@ -1,4 +1,4 @@
-const server = require('./server');
+const socketClient = require('./socketClient');
 let carControls = process.env.DEVELOPMENT ? require('./devCarControls') : require('./carControls');
 
-server(carControls);
+socketClient(carControls);
