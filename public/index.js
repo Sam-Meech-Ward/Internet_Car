@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   function sendHTTPRequest(path) {
     console.log("sendHTTPRequest", path);
     const HTTP = new XMLHttpRequest();
@@ -65,9 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   document.addEventListener("keyup", (event) => {
-    if(arrowKey(event.keyCode)) {
-      car.stopMoving();
-      car.stopSteering();
+    switch (arrowKey(event.keyCode)) {
+      case "left":
+      case "right": car.stopSteering(); break;
+      case "down": 
+      case "up": car.stopMoving(); break;
     }
   });
 
